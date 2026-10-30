@@ -8,7 +8,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 public class TestingBench extends SubsystemBase{
 	private static TestingBench instance;
 
-	private SparkMax brushMoter, brushlessMoter; // what
+	private SparkMax  brushlessMoter;
 
 	public void setState(States state, float speed) {
 		switch (state) {
@@ -22,18 +22,15 @@ public class TestingBench extends SubsystemBase{
 	}
 
 	private void handle_stopped_state() {
-		brushMoter.stopMotor();
 		brushlessMoter.stopMotor();
 	}
 
 	private void handle_running_state(float speed) {
-		brushMoter.set(speed);;
 		brushlessMoter.set(speed);
 	}
 
 	private TestingBench() {
-		brushMoter = new SparkMax(1, MotorType.kBrushed);
-		brushlessMoter = new SparkMax(2, MotorType.kBrushless);
+		brushlessMoter = new SparkMax(3, MotorType.kBrushless);
 
 		setState(States.STOPPED, 0);
 	}
