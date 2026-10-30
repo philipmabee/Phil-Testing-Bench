@@ -8,9 +8,9 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 public class TestingBench extends SubsystemBase{
 	private static TestingBench instance;
 
-	private SparkMax  brushlessMoter;
+	private SparkMax brushlessMoter;
 
-	public void setState(States state, float speed) {
+	public void setState(States state, double speed) {
 		switch (state) {
 			case STOPPED:
 				handle_stopped_state();
@@ -25,7 +25,7 @@ public class TestingBench extends SubsystemBase{
 		brushlessMoter.stopMotor();
 	}
 
-	private void handle_running_state(float speed) {
+	private void handle_running_state(double speed) {
 		brushlessMoter.set(speed);
 	}
 

@@ -25,11 +25,20 @@ public class RobotContainer {
 		Trigger rightBumper = new Trigger(controller::getRightBumperButton);
 		Trigger leftBumper = new Trigger(controller::getLeftBumperButton);
 
+		Trigger aButton = new Trigger(controller::getAButtonPressed);
+		Trigger bButton = new Trigger(controller::getBButtonPressed);
+
 		rightBumper.onTrue(new InstantCommand(() -> testingBench.setState(States.RUNNING, 1)));
 		rightBumper.onFalse(new InstantCommand(() -> testingBench.setState(States.STOPPED, 0)));
 
 		leftBumper.onTrue(new InstantCommand(() -> testingBench.setState(States.RUNNING, -1)));
 		leftBumper.onFalse(new InstantCommand(() -> testingBench.setState(States.STOPPED, 0)));
+
+		aButton.onTrue(new InstantCommand(() -> testingBench.setState(States.RUNNING, 0.5)));
+		aButton.onFalse(new InstantCommand(() -> testingBench.setState(States.STOPPED, 0)));
+
+		bButton.onTrue(new InstantCommand(() -> testingBench.setState(States.RUNNING, -0.5)));
+		bButton.onFalse(new InstantCommand(() -> testingBench.setState(States.STOPPED, 0)));
   }
 
   public Command getAutonomousCommand() {
