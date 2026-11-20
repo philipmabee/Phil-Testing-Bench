@@ -13,19 +13,23 @@ public class TestingBench extends SubsystemBase{
 	public void setState(States state, double speed) {
 		switch (state) {
 			case STOPPED:
-				handle_stopped_state();
+				handleStoppedState();
 				break;
 			case RUNNING:
-				handle_running_state(speed);
+				handleRunningState(speed);
+				break;
+
+			default:
+				handleStoppedState();
 				break;
 		}
 	}
 
-	private void handle_stopped_state() {
+	private void handleStoppedState() {
 		brushlessMoter.stopMotor();
 	}
 
-	private void handle_running_state(double speed) {
+	private void handleRunningState(double speed) {
 		brushlessMoter.set(speed);
 	}
 

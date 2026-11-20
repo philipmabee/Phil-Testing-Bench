@@ -25,8 +25,8 @@ public class RobotContainer {
 		Trigger rightBumper = new Trigger(controller::getRightBumperButton);
 		Trigger leftBumper = new Trigger(controller::getLeftBumperButton);
 
-		Trigger aButton = new Trigger(controller::getAButtonPressed);
-		Trigger bButton = new Trigger(controller::getBButtonPressed);
+		Trigger aButton = new Trigger(controller::getAButton);
+		Trigger bButton = new Trigger(controller::getBButton);
 
 		rightBumper.onTrue(new InstantCommand(() -> testingBench.setState(States.RUNNING, 1)));
 		rightBumper.onFalse(new InstantCommand(() -> testingBench.setState(States.STOPPED, 0)));
